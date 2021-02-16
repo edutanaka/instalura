@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Logo } from '../../../theme/Logo'
 import { MenuWrapper } from './styles/MenuWrapper'
+import { Button } from "../Button";
 
 export default function Menu() {
   const links = [
@@ -33,12 +34,12 @@ export default function Menu() {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <button>
+        <Button ghost variant="secondary.main">
           Entrar
-        </button>
-        <button>
+        </Button>
+        <Button variant="primary.main">
           Cadastrar
-        </button>
+        </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper >
   )
