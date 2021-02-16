@@ -35,13 +35,34 @@ export const colors = {
     },
   },
   modes: {
-    dark: {},
+    dark: {
+      background: {
+        light: {
+          color: '#030506',
+        },
+        main: {
+          color: '#030506',
+        },
+      },
+      primary: {
+        main: {
+          color: '#D7385E',
+          contrastText: '#fff',
+        },
+      },
+      secondary: {
+        main: {
+          color: '#FB7B6B',
+          contrastText: '#fff',
+        },
+      },
+    },
   },
 };
 
 export default {
   colors,
-  borderRadius: '12px',
+  borderRadius: '50px',
   transition: '200ms ease-in-out',
   fontFamily: '\'Rubik\', sans-serif',
 };
