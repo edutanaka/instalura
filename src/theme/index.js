@@ -61,7 +61,7 @@ export const colors = {
 };
 
 export default {
-  colors,
+  colors: colors,
   borderRadius: '50px',
   transition: '200ms ease-in-out',
   fontFamily: '\'Rubik\', sans-serif',
