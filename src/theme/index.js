@@ -1,4 +1,4 @@
-import {typographyVariants} from './typographyVariants';
+import { typographyVariants } from './typographyVariants';
 
 export const colors = {
   background: {
@@ -40,22 +40,37 @@ export const colors = {
     dark: {
       background: {
         light: {
-          color: '#030506',
+          color: '#fff',
         },
         main: {
           color: '#030506',
+        },
+      },
+      borders: {
+        main: {
+          color: '#181F22',
         },
       },
       primary: {
         main: {
-          color: '#D7385E',
-          contrastText: '#fff',
+          color: '#F27895',
+          contrastText: '#000',
         },
       },
       secondary: {
         main: {
-          color: '#FB7B6B',
+          color: '#FFA59A',
+          contrastText: '#000',
+        },
+      },
+      tertiary: {
+        main: {
+          color: '#D4D4D4',
           contrastText: '#fff',
+        },
+        light: {
+          color: '#88989E',
+          contrastText: '#000',
         },
       },
     },
@@ -63,6 +78,7 @@ export const colors = {
 };
 
 export default {
+  // colors: colors.modes.dark,
   colors: colors,
   typographyVariants,
   borderRadius: '12px',
