@@ -1,47 +1,36 @@
-import React from 'react'
-
-import { Logo } from '../../../theme/Logo'
-import { MenuWrapper } from './styles/MenuWrapper'
-import { Button } from "../Button";
-import Text from '../../foundation/Text';
+import React from 'react';
+import { Logo } from '../../../theme/Logo';
+import { Text } from '../../foundation/Text';
+import { Button } from '../Button';
+import { MenuWrapper } from './styles/MenuWrapper';
 
 export default function Menu() {
-  const links = [
-    {
-      texto: 'Home',
-      url: '/'
-    },
-    {
-      texto: 'Perguntas frequentes',
-      url: '/faq'
-    },
-    {
-      texto: 'Sobre',
-      url: '/sobre'
-    }
-  ]
   return (
     <MenuWrapper>
-      <MenuWrapper.LeftSide>
+      <MenuWrapper.LeftSide> {/* MenuWrapper.LeftSide */}
         <Logo />
       </MenuWrapper.LeftSide>
-      <MenuWrapper.CentralSide>
-        {links.map((link) => (
-
+      <MenuWrapper.CentralSide as="ul"> {/* MenuWrapper.CentralSide */}
+        {[
+          { url: '/', name: 'Home' },
+          { url: '/faq', name: 'Perguntas Frequentes' },
+          { url: '/sobre', name: 'Sobre' },
+        ].map((link) => (
           <li key={link.url}>
-            <Text tag="a" variant="smallestException" href={link.url}>{link.texto}</Text>
+            <Text variant="smallestException" tag="a" href={link.url}>
+              {link.name}
+            </Text>
           </li>
-
         ))}
       </MenuWrapper.CentralSide>
-      <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+      <MenuWrapper.RightSide> {/* MenuWrapper.RightSide */}
+        <Button type="button" ghost variant="secondary.main">
           Entrar
         </Button>
-        <Button variant="primary.main">
+        <Button type="button" variant="primary.main">
           Cadastrar
         </Button>
       </MenuWrapper.RightSide>
-    </MenuWrapper >
-  )
+    </MenuWrapper>
+  );
 }
