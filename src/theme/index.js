@@ -87,7 +87,7 @@ export const breakpoints = {
 
 export default {
   // colors: colors.modes.dark,
-  colors: colors,
+  colors,
   typographyVariants,
   breakpoints,
   borderRadius: '12px',
