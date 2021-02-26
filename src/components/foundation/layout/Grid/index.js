@@ -21,7 +21,7 @@ const Container = styled.div`
       max-width: 768px;
       padding-right: 16px;
       padding-left: 16px; 
-    `,  
+    `,
     lg: css`
       max-width: 1160px; 
     `,
@@ -30,14 +30,14 @@ const Container = styled.div`
     `,
   })}
   ${propToStyle('marginTop')}
-`
+`;
 
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-right: -16px;
   margin-left: -16px;
-`
+`;
 
 const Col = styled.div`
   padding-right: 16px;
@@ -46,8 +46,7 @@ const Col = styled.div`
   flex-grow: 1;
   max-width: 100%;
 
-  ${function({value}) {
-  
+  ${({ value }) => {
     if (typeof value === 'number') {
       return css`
       flex: 0 0 ${(100 * value) / 12}%;
@@ -121,6 +120,6 @@ const Col = styled.div`
 
 export const Grid = {
   Container,
-  Row, 
+  Row,
   Col,
 };
