@@ -75,7 +75,7 @@ export default function Home() {
           </Grid.Col>
 
           <Grid.Col
-            offset={{ xs: 12, md: 6 }}
+            value={{ xs: 12, md: 6 }}
           >
             <img
               style={{ display: 'block', margin: 'auto' }}
