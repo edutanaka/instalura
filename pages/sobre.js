@@ -7,11 +7,23 @@ import { Text } from '../src/components/foundation/Text';
 export default function PageSobre() {
   return (
     <>
-      <Box>
+      <Box
+        flex="1"
+        display="flex"
+        flexWrap="wrap"
+        flexDirection="column"
+        justifyContent="space-between"
+        backgroundImage="url(/images/bubbles.svg)"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="bottom right"
+      >
         <Menu />
-        <Text 
+        <Text
           tag="h1"
-          textAlign={{md: 'center'}}
+          textAlign={{
+            xs: 'center',
+            md: 'center',
+          }}
         >
           sobre
         </Text>
