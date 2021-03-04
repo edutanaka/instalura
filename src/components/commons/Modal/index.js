@@ -14,7 +14,7 @@ const ModalWrapper = styled.div`
   bottom: 0;
   margin: auto;
   overflow: scroll;
-  
+
   ${({ isOpen }) => {
     if (isOpen) {
       return css`
@@ -24,14 +24,14 @@ const ModalWrapper = styled.div`
     }
     return css`
       opacity: 0;
-      pointer-events: none;    
+      pointer-events: none;
     `;
   }}
 `;
 
 function Modal({ isOpen, onClose, children }) {
   return (
-    <ModalWrapper 
+    <ModalWrapper
       isOpen={isOpen}
       onClick={(event) => {
         const isSafeArea = event.target.closest('[data-modal-safe-area="true"]');
@@ -49,7 +49,7 @@ function Modal({ isOpen, onClose, children }) {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

@@ -21,15 +21,13 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-
-
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
           setModalState(false);
         }}
       >
-        {(propsDoModal) => {
+        {(propsDoModal) => (
           <Box
             backgroundColor="white"
             {...propsDoModal}
@@ -38,7 +36,7 @@ export default function Home() {
               Nosso conteúdo para modal
             </div>
           </Box>
-        }}
+        )}
       </Modal>
 
       <Menu />
