@@ -22,6 +22,7 @@ export default function Home() {
       backgroundPosition="bottom right"
     >
       <Modal
+        flex="1"
         isOpen={isModalOpen}
         onClose={() => {
           setModalState(false);
@@ -30,6 +31,7 @@ export default function Home() {
         {(propsDoModal) => (
           <Box
             backgroundColor="white"
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...propsDoModal}
           >
             <div>
