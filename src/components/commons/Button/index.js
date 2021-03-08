@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
-import { TextStyleVariants } from '../../foundation/Text';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 
@@ -24,11 +24,11 @@ export const Button = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius};
   ${breakpointsMedia({
     xs: css`
-      ${TextStyleVariants.smallestException}
+      ${TextStyleVariantsMap.smallestException}
     `,
     md: css`
       padding: 12px 43px;
-      ${TextStyleVariants.paragraph1}
+      ${TextStyleVariantsMap.paragraph1}
     `,
   })}
   ${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}
@@ -36,6 +36,15 @@ export const Button = styled.button`
   &:focus {
     opacity: .5;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .2;
+  }
+
+  ${({ fullWidth }) => fullWidth && css`
+      width: 100%;
+  `};
 
   ${propToStyle('margin')}
   ${propToStyle('display')}
