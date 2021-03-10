@@ -36,6 +36,9 @@ export const colors = {
       contrastText: '#fff',
     },
   },
+  logo: {
+    color: '#070C0E',
+  },
   modes: {
     dark: {
       background: {
@@ -54,7 +57,7 @@ export const colors = {
       primary: {
         main: {
           color: '#F27895',
-          contrastText: '#000',
+          contrastText: '#FFFFFF',
         },
       },
       secondary: {
@@ -73,6 +76,9 @@ export const colors = {
           contrastText: '#000',
         },
       },
+      logo: {
+        color: '#FFFFFF',
+      },
     },
   },
 };
@@ -86,8 +92,8 @@ export const breakpoints = {
 };
 
 export default {
-  // colors: colors.modes.dark,
-  colors,
+  colors: colors.modes.dark,
+  // colors,
   typographyVariants,
   breakpoints,
   borderRadius: '12px',
