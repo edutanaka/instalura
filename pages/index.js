@@ -18,7 +18,7 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
+      backgroundImage="url(/images/bubbles-dark.svg)"
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
