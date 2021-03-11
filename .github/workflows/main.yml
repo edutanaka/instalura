@@ -8,7 +8,7 @@ on:
   # push:
     # branches: [ main ]
   pull_request:
-    branches: [ opened, synchronize ]
+    types: [ opened, synchronize ]
 
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
@@ -23,6 +23,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
+          
+      - name: instalar dependências
+        run: yarn install
+          
       - name: Roda o linter!
         run: yarn lint
 
