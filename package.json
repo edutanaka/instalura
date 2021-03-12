@@ -37,7 +37,7 @@
   "husky": {
     "hooks": {
       "pre-push": "yarn lint",
-      "commit-msg": "commitling -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "license": "MIT",
