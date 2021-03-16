@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box } from '../src/components/foundation/layout/Box';
-import Menu from '../src/components/commons/Menu';
-import Text from '../src/components/foundation/Text';
-import Footer from '../src/components/commons/Footer';
+import { Box } from '../../src/components/foundation/layout/Box';
+import Menu from '../../src/components/commons/Menu';
+import Text from '../../src/components/foundation/Text';
+import Footer from '../../src/components/commons/Footer';
 
-export default function Page404() {
+export default function FAQPage() {
   return (
     <>
       <Box
@@ -25,7 +25,7 @@ export default function Page404() {
             md: 'center',
           }}
         >
-          404
+          FAQ
         </Text>
         <Footer />
       </Box>
