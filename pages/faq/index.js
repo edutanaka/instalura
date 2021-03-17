@@ -1,35 +1,39 @@
 import React from 'react';
-import { Box } from '../../src/components/foundation/layout/Box';
-import Menu from '../../src/components/commons/Menu';
-import Text from '../../src/components/foundation/Text';
-import Footer from '../../src/components/commons/Footer';
+import FAQScreen from '../../src/components/screens/FAQScreen';
 
-export default function FAQPage() {
+export default function FAQPage(props) {
+  // const [faqCategories, setFaqCategories] = React.useState([]);
+
+  // React.useEffect(() => {
+  //   fetch('https://instalura-api.vercel.app/api/content/faq').then(async (res) => {
+  //     const response = await res.json();
+  //     return response.data;
+  //   })
+  //     .then((faqCategoriesFromServer) => {
+  //       setFaqCategories(faqCategoriesFromServer);
+  //     });
+  // });
+
+  // const props = {
+  //   faqCategories,
+  // };
+
   return (
-    <>
-      <Box
-        flex="1"
-        display="flex"
-        flexWrap="wrap"
-        flexDirection="column"
-        justifyContent="space-between"
-        backgroundImage="url(/images/bubbles.svg)"
-        backgroundRepeat="no-repeat"
-        backgroundPosition="bottom right"
-      >
-        <Menu />
-        <Text
-          tag="h1"
-          textAlign={{
-            xs: 'center',
-            md: 'center',
-          }}
-        >
-          FAQ
-        </Text>
-        <Footer />
-      </Box>
-
-    </>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <FAQScreen {...props} />
   );
+}
+
+export async function getStaticProps() {
+  const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq').then(async (res) => {
+    const response = await res.json();
+    return response.data;
+  });
+
+  // Falar sobre tamanho da página aqui e tomar cuidado com recursos extras que vão pra página
+  return {
+    props: {
+      faqCategories,
+    },
+  };
 }
