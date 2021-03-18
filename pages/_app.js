@@ -6,10 +6,10 @@ import theme, { colors } from '../src/theme';
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
-  const [isModeDark, setIsModeDark] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   function changeMode() {
-    return setIsModeDark(!isModeDark);
+    return setIsDarkMode(!isDarkMode);
   }
 
   return (
@@ -22,7 +22,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      { isModeDark === false && (
+
+      { isDarkMode === false && (
         <ThemeProvider theme={() => {
           const mix = { colors, ...theme };
           return mix;
@@ -30,11 +31,11 @@ export default function App({ Component, pageProps }) {
         >
           <GlobalStyle />
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-          <Component changeMode={changeMode} isDarkMode={isModeDark} {...pageProps} />
+          <Component changeMode={changeMode} isDarkMode={isDarkMode} {...pageProps} />
         </ThemeProvider>
       )}
 
-      { isModeDark === true && (
+      { isDarkMode === true && (
         <ThemeProvider theme={() => {
           const mix = { colors: colors.modes.dark, ...theme };
           return mix;
@@ -42,7 +43,7 @@ export default function App({ Component, pageProps }) {
         >
           <GlobalStyle />
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-          <Component changeMode={changeMode} isDarkMode={isModeDark} {...pageProps} />
+          <Component changeMode={changeMode} isDarkMode={isDarkMode} {...pageProps} />
         </ThemeProvider>
       )}
     </>
