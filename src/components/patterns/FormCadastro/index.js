@@ -77,7 +77,7 @@ function FormContent() {
       <Text
         variant="title"
         tag="h1"
-        color="tertiary.main"
+        color="tertiary.contrastText"
       >
         Pronto para saber da vida dos outros?
       </Text>
