@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Footer from '../src/components/commons/Footer';
 import Menu from '../src/components/commons/Menu';
 import Text from '../src/components/foundation/Text';
@@ -8,7 +9,7 @@ import { Box } from '../src/components/foundation/layout/Box';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
 
-export default function Home() {
+export default function Home({ isDarkMode, changeMode }) {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
+      backgroundImage={isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'}
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
@@ -36,6 +37,8 @@ export default function Home() {
 
       <Menu
         onCadastrarClick={() => setModalState(true)}
+        changeMode={changeMode}
+        isDarkMode={isDarkMode}
       />
 
       <Grid.Container
@@ -111,3 +114,8 @@ export default function Home() {
     </Box>
   );
 }
+
+Home.propTypes = {
+  changeMode: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+};

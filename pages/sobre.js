@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Footer from '../src/components/commons/Footer';
 import Menu from '../src/components/commons/Menu';
 import { Box } from '../src/components/foundation/layout/Box';
@@ -6,7 +7,8 @@ import Text from '../src/components/foundation/Text';
 import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
 
-export default function PageSobre() {
+// eslint-disable-next-line react/prop-types
+export default function PageSobre({ isDarkMode, changeMode }) {
   const [isModalOpen, setModalState] = React.useState(false);
   return (
     <>
@@ -16,7 +18,7 @@ export default function PageSobre() {
         flexWrap="wrap"
         flexDirection="column"
         justifyContent="space-between"
-        backgroundImage="url(/images/bubbles.svg)"
+        backgroundImage={isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'}
         backgroundRepeat="no-repeat"
         backgroundPosition="bottom right"
       >
@@ -34,9 +36,13 @@ export default function PageSobre() {
 
         <Menu
           onCadastrarClick={() => setModalState(true)}
+          changeMode={changeMode}
+          isDarkMode={isDarkMode}
         />
         <Text
-          tag="h1"
+          tag="h2"
+          variant="subTitle"
+          color="tertiary.main"
           textAlign={{
             xs: 'center',
             md: 'center',
@@ -50,3 +56,8 @@ export default function PageSobre() {
     </>
   );
 }
+
+PageSobre.propTypes = {
+  changeMode: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+};

@@ -108,5 +108,5 @@ MenuWrapper.RightSide = styled.div`
     md: css`
       order: initial;
     `,
-  })}
+  })}  
 `;
