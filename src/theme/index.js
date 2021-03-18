@@ -4,6 +4,7 @@ export const colors = {
   background: {
     light: {
       color: '#FFFFFF',
+      contrastColor: '#000',
     },
     main: {
       color: '#F2F2F2',
@@ -17,30 +18,31 @@ export const colors = {
   primary: {
     main: {
       color: '#D7385E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   secondary: {
     main: {
       color: '#FB7B6B',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   tertiary: {
     main: {
       color: '#070C0E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
     light: {
       color: '#88989E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   modes: {
     dark: {
       background: {
         light: {
-          color: '#fff',
+          color: '#000000',
+          contrastColor: '#FFFFFF',
         },
         main: {
           color: '#030506',
@@ -53,8 +55,8 @@ export const colors = {
       },
       primary: {
         main: {
-          color: '#F27895',
-          contrastText: '#000',
+          color: '#D7385E',
+          contrastText: '#FFFFFF',
         },
       },
       secondary: {
@@ -65,8 +67,8 @@ export const colors = {
       },
       tertiary: {
         main: {
-          color: '#D4D4D4',
-          contrastText: '#fff',
+          color: '#FFFFFF',
+          contrastText: '#FFFFFF',
         },
         light: {
           color: '#88989E',
@@ -86,8 +88,6 @@ export const breakpoints = {
 };
 
 export default {
-  // colors: colors.modes.dark,
-  colors,
   typographyVariants,
   breakpoints,
   borderRadius: '12px',

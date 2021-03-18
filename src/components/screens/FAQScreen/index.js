@@ -8,7 +8,7 @@ import Footer from '../../commons/Footer';
 import Modal from '../../commons/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 
-export default function FAQScreen({ faqCategories }) {
+export default function FAQScreen({ faqCategories, isDarkMode, changeMode }) {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
@@ -30,6 +30,8 @@ export default function FAQScreen({ faqCategories }) {
 
       <Menu
         onCadastrarClick={() => setModalState(true)}
+        changeMode={changeMode}
+        isDarkMode={isDarkMode}
       />
 
       <Grid.Container style={{ flex: 1 }}>
@@ -116,4 +118,6 @@ FAQScreen.propTypes = {
       description: PropTypes.string,
     })),
   })).isRequired,
+  changeMode: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };

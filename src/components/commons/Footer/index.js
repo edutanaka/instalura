@@ -9,6 +9,9 @@ const FooterWrapper = styled.footer`
   border-radius: 4px; 
   padding-right: 28px;
   padding-left: 28px;
+  p {
+    color: ${({ theme }) => theme.colors.tertiary.main.color};
+  }
   img {
     width: 58px;
     margin-right: 23px;
