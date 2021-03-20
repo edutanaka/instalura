@@ -12,7 +12,7 @@ export const colors = {
   },
   borders: {
     main: {
-      color: '#F1F1F1',
+      color: '#FFFFFF',
     },
   },
   primary: {

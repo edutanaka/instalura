@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Lottie } from '@crello/react-lottie';
 import errorAnimation from './animations/error.json';
 import successAnimation from './animations/success.json';
@@ -77,7 +78,7 @@ function FormContent() {
       <Text
         variant="title"
         tag="h1"
-        color="tertiary.contrastText"
+        color="tertiary.main"
       >
         Pronto para saber da vida dos outros?
       </Text>
@@ -149,6 +150,10 @@ function FormContent() {
   );
 }
 
+const BackgroundTheme = styled.div`
+  background: ${({ theme }) => theme.colors.borders.main.color};
+`;
+
 // eslint-disable-next-line react/prop-types
 export default function FormCadastro({ propsDoModal }) {
   return (
@@ -164,22 +169,24 @@ export default function FormCadastro({ propsDoModal }) {
         flex={1}
         value={{ xs: 12, md: 5, lg: 4 }}
       >
-        <Box
-          boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          flex={1}
-          padding={{
-            xs: '16px',
-            md: '85px',
-          }}
-          backgroundColor="white"
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...propsDoModal}
-        >
-          <FormContent />
-        </Box>
+        <BackgroundTheme>
+          <Box
+            boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            flex="1"
+            padding={{
+              xs: '16px',
+              md: '85px',
+            }}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+
+            <FormContent />
+          </Box>
+        </BackgroundTheme>
       </Grid.Col>
     </Grid.Row>
   );
