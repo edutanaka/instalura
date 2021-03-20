@@ -3,11 +3,22 @@ import PropTypes from 'prop-types';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
 
+const CloseButton = styled.div`  
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.background.light.contrastColor};
+  color: ${({ theme }) => theme.colors.primary.main.color}; 
+  font-weight: bold;
+  padding: 10px;
+  z-index: 1000;  
+  position: absolute;
+  right: 0;
+`;
+
 const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -52,6 +63,9 @@ function Modal({ isOpen, onClose, children }) {
     >
       {isOpen && <LockScroll />}
 
+      <CloseButton>
+        X
+      </CloseButton>
       <motion.div
         variants={{
           open: {
