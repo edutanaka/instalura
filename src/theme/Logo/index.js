@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LogoWrapper = styled.div`
-  svg {
+  & > svg {
     fill: ${({ theme }) => theme.colors.tertiary.main.color}
   }
 `;
