@@ -10,7 +10,7 @@ import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 const DarkModeWrapper = styled.button`  
   position: fixed;  
   cursor: pointer;
-  border-radius: 5px;  
+  border-radius: 12px;  
   background-color: ${({ theme }) => theme.colors.background.light.contrastColor};
   bottom: 15px;
   right: 15px;
@@ -18,7 +18,7 @@ const DarkModeWrapper = styled.button`
   ${breakpointsMedia({
     xs: css`
       width: 50px;
-      height: 30px;
+      height: 40px;
     `,
     md: css`
       width: 60px;
