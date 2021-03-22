@@ -1,121 +1,102 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../src/components/commons/Footer';
-import Menu from '../src/components/commons/Menu';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
-import { Box } from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/commons/Modal';
-import FormCadastro from '../src/components/patterns/FormCadastro';
+import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
 
-export default function Home({ isDarkMode, changeMode }) {
-  const [isModalOpen, setModalState] = React.useState(false);
+export function HomeScreen() {
+  const websitePageContext = React.useContext(WebsitePageContext);
 
   return (
-    <Box
-      flex="1"
-      display="flex"
-      flexWrap="wrap"
-      flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage={isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'}
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
+    <Grid.Container
+      marginTop={{
+        xs: '32px',
+        md: '75px',
+      }}
     >
-      <Modal
-        flex="1"
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
+      <Grid.Row>
 
-      <Menu
-        onCadastrarClick={() => setModalState(true)}
-        changeMode={changeMode}
-        isDarkMode={isDarkMode}
-      />
+        <Grid.Col
+          offset={{ xs: 0, md: 1 }}
+          value={{ xs: 12, md: 5 }}
+          display="flex"
+          alignItems="flex-start"
+          justifyContent="center"
+          flexDirection="column"
+        >
 
-      <Grid.Container
-        marginTop={{
-          xs: '32px',
-          md: '75px',
-        }}
-      >
-
-        <Grid.Row>
-
-          <Grid.Col
-            offset={{ xs: 0, md: 1 }}
-            value={{ xs: 12, md: 5 }}
-            display="flex"
-            alignItems="flex-start"
-            justifyContent="center"
-            flexDirection="column"
+          <Text
+            variant="title"
+            tag="h1"
+            color="tertiary.main"
+            textAlign={{
+              xs: 'center',
+              md: 'left',
+            }}
           >
-
-            <Text
-              variant="title"
-              tag="h1"
-              color="tertiary.main"
-              textAlign={{
-                xs: 'center',
-                md: 'left',
-              }}
-            >
-              Compartilhe momentos e conecte-se com amigos
-            </Text>
-            <Text
-              variant="paragraph1"
-              tag="p"
-              color="tertiary.light"
-              textAlign={{
-                xs: 'center',
-                md: 'left',
-              }}
-            >
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
-            </Text>
-
-            <Button
-              variant="primary.main"
-              margin={{
-                xs: 'auto',
-                md: 'initial',
-              }}
-              display="block"
-              onClick={() => {
-                setModalState(!isModalOpen);
-              }}
-            >
-              Cadastrar
-            </Button>
-          </Grid.Col>
-
-          <Grid.Col
-            value={{ xs: 12, md: 6 }}
+            Compartilhe momentos e conecte-se com amigos
+          </Text>
+          <Text
+            variant="paragraph1"
+            tag="p"
+            color="tertiary.light"
+            textAlign={{
+              xs: 'center',
+              md: 'left',
+            }}
           >
-            <img
-              style={{ display: 'block', margin: 'auto' }}
-              alt="imagem de celular com páginas internas do projeto com o perfil do Cage"
-              src="./images/phones.png"
-            />
-          </Grid.Col>
-        </Grid.Row>
-      </Grid.Container>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+          </Text>
 
-      <Footer />
-    </Box>
+          <Button
+            variant="primary.main"
+            margin={{
+              xs: 'auto',
+              md: 'initial',
+            }}
+            display="block"
+            onClick={() => {
+              websitePageContext.toggleModalCadastro();
+            }}
+          >
+            Cadastrar
+          </Button>
+        </Grid.Col>
+
+        <Grid.Col
+          value={{ xs: 12, md: 6 }}
+        >
+          <img
+            style={{ display: 'block', margin: 'auto' }}
+            alt="imagem de celular com páginas internas do projeto com o perfil do Cage"
+            src="./images/phones.png"
+          />
+        </Grid.Col>
+      </Grid.Row>
+    </Grid.Container>
+  );
+}
+
+export default function Home({ isDarkMode, changeMode }) {
+  return (
+    <WebsitePageWrapper
+      seoProps={{
+        headTitle: 'Home',
+      }}
+      isDarkMode={isDarkMode}
+      changeMode={changeMode}
+      menuProps={{
+        display: true,
+      }}
+    >
+      <HomeScreen />
+    </WebsitePageWrapper>
   );
 }
 
 Home.propTypes = {
-  changeMode: PropTypes.func.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
+  changeMode: PropTypes.func.isRequired,
 };

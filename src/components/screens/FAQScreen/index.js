@@ -3,37 +3,17 @@ import PropTypes from 'prop-types';
 import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
-import Menu from '../../commons/Menu';
-import Footer from '../../commons/Footer';
-import Modal from '../../commons/Modal';
-import FormCadastro from '../../patterns/FormCadastro';
+import WebsitePageWrapper from '../../wrappers/WebsitePage';
 
 export default function FAQScreen({ faqCategories, isDarkMode, changeMode }) {
-  const [isModalOpen, setModalState] = React.useState(false);
-
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      flex="1"
+    <WebsitePageWrapper
+      seoProps={{
+        headTitle: 'FAQ',
+      }}
+      isDarkMode={isDarkMode}
+      changeMode={changeMode}
     >
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
-
-      <Menu
-        onCadastrarClick={() => setModalState(true)}
-        changeMode={changeMode}
-        isDarkMode={isDarkMode}
-      />
-
       <Grid.Container style={{ flex: 1 }}>
         <Grid.Row
           marginTop={{ xs: '32px', md: '100px' }}
@@ -102,9 +82,7 @@ export default function FAQScreen({ faqCategories, isDarkMode, changeMode }) {
           }
         </Grid.Row>
       </Grid.Container>
-
-      <Footer />
-    </Box>
+    </WebsitePageWrapper>
   );
 }
 
@@ -118,6 +96,6 @@ FAQScreen.propTypes = {
       description: PropTypes.string,
     })),
   })).isRequired,
-  changeMode: PropTypes.func.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
+  changeMode: PropTypes.func.isRequired,
 };
