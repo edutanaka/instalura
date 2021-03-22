@@ -151,7 +151,7 @@ function FormContent() {
 }
 
 const BackgroundTheme = styled.div`
-  background: ${({ theme }) => theme.colors.borders.main.color};
+  background-color: ${({ theme }) => theme.colors.borders.main.color};
 `;
 
 // eslint-disable-next-line react/prop-types
