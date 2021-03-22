@@ -4,9 +4,8 @@ import { Logo } from '../../../theme/Logo';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
 import Link from '../Link';
-import { DarkMode } from '../DarkMode';
 
-export default function Menu({ onCadastrarClick, changeMode, isDarkMode }) {
+export default function Menu({ onCadastrarClick }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -32,7 +31,6 @@ export default function Menu({ onCadastrarClick, changeMode, isDarkMode }) {
         <Button type="button" variant="primary.main" onClick={onCadastrarClick}>
           Cadastrar
         </Button>
-        <DarkMode changeMode={changeMode} isDarkMode={isDarkMode} />
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
@@ -40,6 +38,4 @@ export default function Menu({ onCadastrarClick, changeMode, isDarkMode }) {
 
 Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
-  changeMode: PropTypes.func.isRequired,
-  isDarkMode: PropTypes.bool.isRequired,
 };

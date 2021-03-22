@@ -27,7 +27,7 @@ const DarkModeWrapper = styled.button`
   })}
 `;
 
-export function DarkMode({ changeMode, isDarkMode }) {
+export default function DarkMode({ changeMode, isDarkMode }) {
   return (
     <DarkModeWrapper
       onClick={changeMode}
