@@ -13,6 +13,11 @@ export default function FAQScreen({ faqCategories, isDarkMode, changeMode }) {
       }}
       isDarkMode={isDarkMode}
       changeMode={changeMode}
+      pageBoxProps={{
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom right',
+        backgroundImage: (isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'),
+      }}
     >
       <Grid.Container style={{ flex: 1 }}>
         <Grid.Row

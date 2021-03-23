@@ -12,6 +12,11 @@ export default function PageSobre({ isDarkMode, changeMode }) {
         seoProps={{
           headTitle: 'Sobre',
         }}
+        pageBoxProps={{
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'bottom right',
+          backgroundImage: (isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'),
+        }}
         isDarkMode={isDarkMode}
         changeMode={changeMode}
       >
