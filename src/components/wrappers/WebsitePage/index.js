@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '../../foundation/layout/Box';
@@ -16,6 +17,7 @@ export default function WebsitePageWrapper({
   children,
   seoProps,
   menuProps,
+  pageBoxProps,
   isDarkMode,
   changeMode,
 }) {
@@ -29,7 +31,6 @@ export default function WebsitePageWrapper({
       }}
     >
       <SEO
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...seoProps}
       />
       <DarkMode isDarkMode={isDarkMode} changeMode={changeMode} />
@@ -39,9 +40,7 @@ export default function WebsitePageWrapper({
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
-        backgroundImage={isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'}
-        backgroundRepeat="no-repeat"
-        backgroundPosition="bottom right"
+        {...pageBoxProps}
       >
         <Modal
           flex="1"
