@@ -90,6 +90,11 @@ export default function Home({ isDarkMode, changeMode }) {
       menuProps={{
         display: true,
       }}
+      pageBoxProps={{
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom right',
+        backgroundImage: (isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'),
+      }}
     >
       <HomeScreen />
     </WebsitePageWrapper>
