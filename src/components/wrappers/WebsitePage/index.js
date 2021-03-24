@@ -7,10 +7,9 @@ import FormCadastro from '../../patterns/FormCadastro';
 import Menu from '../../commons/Menu';
 import Footer from '../../commons/Footer';
 import SEO from '../../commons/SEO';
-import DarkMode from '../../commons/DarkMode';
 
 export const WebsitePageContext = React.createContext({
-  toggleModalCadastro: () => {},
+  toggleModalCadastro: () => { },
 });
 
 export default function WebsitePageWrapper({
@@ -18,10 +17,9 @@ export default function WebsitePageWrapper({
   seoProps,
   menuProps,
   pageBoxProps,
-  isDarkMode,
-  changeMode,
 }) {
   const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <WebsitePageContext.Provider
       value={{
@@ -30,10 +28,7 @@ export default function WebsitePageWrapper({
         },
       }}
     >
-      <SEO
-        {...seoProps}
-      />
-      <DarkMode isDarkMode={isDarkMode} changeMode={changeMode} />
+      <SEO {...seoProps} />
 
       <Box
         flex="1"
@@ -54,10 +49,10 @@ export default function WebsitePageWrapper({
           )}
         </Modal>
 
-        { menuProps.display && (
-        <Menu
-          onCadastrarClick={() => setModalState(true)}
-        />
+        {menuProps.display && (
+          <Menu
+            onCadastrarClick={() => setModalState(true)}
+          />
         )}
 
         {children}
@@ -65,6 +60,7 @@ export default function WebsitePageWrapper({
         <Footer />
       </Box>
     </WebsitePageContext.Provider>
+
   );
 }
 
@@ -89,6 +85,4 @@ WebsitePageWrapper.propTypes = {
     backgroundPosition: PropTypes.string,
   }),
   children: PropTypes.node.isRequired,
-  isDarkMode: PropTypes.bool.isRequired,
-  changeMode: PropTypes.func.isRequired,
 };

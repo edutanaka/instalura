@@ -27,23 +27,25 @@ const DarkModeWrapper = styled.button`
   })}
 `;
 
-export default function DarkMode({ changeMode, isDarkMode }) {
+export default function DarkMode({ isDarkMode, changeMode }) {
   return (
-    <DarkModeWrapper
-      onClick={changeMode}
-    >
-      <Lottie
-        config={{
-          animationData: isDarkMode
-            ? darkmodeOn // https://lottiefiles.com/16544-dark-mode-on
-            : darkmodeOff, // https://lottiefiles.com/16545-dark-mode-off
-        }}
-      />
-    </DarkModeWrapper>
+    <>
+      <DarkModeWrapper
+        onClick={changeMode}
+      >
+        <Lottie
+          config={{
+            animationData: isDarkMode
+              ? darkmodeOn // https://lottiefiles.com/16544-dark-mode-on
+              : darkmodeOff, // https://lottiefiles.com/16545-dark-mode-off
+          }}
+        />
+      </DarkModeWrapper>
+    </>
   );
 }
 
 DarkMode.propTypes = {
-  changeMode: PropTypes.func.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
+  changeMode: PropTypes.func.isRequired,
 };
