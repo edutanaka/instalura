@@ -60,7 +60,7 @@ export function Button({ href, children, ...props }) {
   const tag = hasHref ? Link : 'button';
   return (
     <ButtonWrapper
-      tag={tag}
+      as={tag}
       href={href}
       {...props}
     >

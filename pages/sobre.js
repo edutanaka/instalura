@@ -1,42 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Text from '../src/components/foundation/Text';
-
-import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 // eslint-disable-next-line react/prop-types
-export default function PageSobre({ isDarkMode, changeMode }) {
+export function PageSobre() {
   return (
-    <>
-      <WebsitePageWrapper
-        seoProps={{
-          headTitle: 'Sobre',
-        }}
-        pageBoxProps={{
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'bottom right',
-          backgroundImage: (isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'),
-        }}
-        isDarkMode={isDarkMode}
-        changeMode={changeMode}
-      >
-        <Text
-          tag="h2"
-          variant="subTitle"
-          color="tertiary.main"
-          textAlign={{
-            xs: 'center',
-            md: 'center',
-          }}
-        >
-          sobre
-        </Text>
-      </WebsitePageWrapper>
-    </>
+    <Text
+      tag="h2"
+      variant="subTitle"
+      color="tertiary.main"
+      textAlign={{
+        xs: 'center',
+        md: 'center',
+      }}
+    >
+      sobre
+    </Text>
   );
 }
 
-PageSobre.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
-  changeMode: PropTypes.func.isRequired,
-};
+export default websitePageHOC(PageSobre, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Sobre',
+    },
+    pageBoxProps: {
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+      backgroundImage: ('url(/images/bubbles.svg)'),
+    },
+  },
+});

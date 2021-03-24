@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import PropTypes from 'prop-types';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
-import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 export function HomeScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
@@ -79,29 +80,18 @@ export function HomeScreen() {
   );
 }
 
-export default function Home({ isDarkMode, changeMode }) {
-  return (
-    <WebsitePageWrapper
-      seoProps={{
-        headTitle: 'Home',
-      }}
-      isDarkMode={isDarkMode}
-      changeMode={changeMode}
-      menuProps={{
-        display: true,
-      }}
-      pageBoxProps={{
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
-        backgroundImage: (isDarkMode ? 'url(/images/bubbles-dark.svg)' : 'url(/images/bubbles.svg)'),
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-}
-
-Home.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired,
-  changeMode: PropTypes.func.isRequired,
-};
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    menuProps: {
+      display: true,
+    },
+    pageBoxProps: {
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+      backgroundImage: 'url(/images/bubbles.svg)',
+    },
+  },
+});
