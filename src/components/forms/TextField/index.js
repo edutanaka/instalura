@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -23,8 +24,9 @@ Input.defaultProps = {
 export default function TextField({
   placeholder,
   name,
-  onChange,
   value,
+  ...props
+
 }) {
   return (
     <InputWrapper>
@@ -32,8 +34,8 @@ export default function TextField({
         type="text"
         placeholder={placeholder}
         name={name}
-        onChange={onChange}
         value={value}
+        {...props}
       />
     </InputWrapper>
   );
@@ -42,6 +44,5 @@ export default function TextField({
 TextField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
