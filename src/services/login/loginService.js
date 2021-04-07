@@ -1,3 +1,5 @@
+import { destroyCookie, setCookie } from 'nookies';
+
 async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
     headers: {
@@ -26,10 +28,22 @@ export const loginService = {
       },
     })
       .then((respostaConvertida) => {
-        // Salvar o Token
+        const { token } = respostaConvertida.data;
+        const DAY_IN_SECONDS = 86400;
+
+        setCookie(null, 'APP_TOKEN', token, {
+          path: '/',
+          maxAge: DAY_IN_SECONDS * 7,
+        });
+
+        return { token };
+      })
+      .catch((error) => {
         // eslint-disable-next-line no-console
-        console.log(respostaConvertida);
-        return respostaConvertida;
+        console.error(error);
       });
+  },
+  logout() {
+    destroyCookie(null, 'APP_TOKEN');
   },
 };
