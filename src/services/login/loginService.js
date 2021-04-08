@@ -1,4 +1,5 @@
-import { destroyCookie, setCookie } from 'nookies';
+import { setCookie, destroyCookie } from 'nookies';
+import { BASE_URL } from '../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
@@ -20,7 +21,7 @@ async function HttpClient(url, { headers, body, ...options }) {
 
 export const loginService = {
   async login({ username, password }) {
-    return HttpClient('https://instalura-api-git-master-omariosouto.vercel.app/api/login', {
+    return HttpClient(`${BASE_URL}/api/login`, {
       method: 'POST',
       body: {
         username,
@@ -30,17 +31,18 @@ export const loginService = {
       .then((respostaConvertida) => {
         const { token } = respostaConvertida.data;
         const DAY_IN_SECONDS = 86400;
-
+        // Salvar o Token
         setCookie(null, 'APP_TOKEN', token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
 
-        return { token };
+        return {
+          token,
+        };
       })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
+      .catch((err) => {
+        throw new Error(`Falha na conexão com o servidor:( : ${err}`);
       });
   },
   logout() {
