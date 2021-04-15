@@ -33,7 +33,7 @@ jobs:
       - name: Node Version
         run: node -v
 
-unit_tests:
+  unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
