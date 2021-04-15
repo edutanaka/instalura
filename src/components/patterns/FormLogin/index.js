@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import * as yup from 'yup';
 import { Button } from '../../commons/Button';
@@ -9,30 +10,39 @@ import { loginService } from '../../../services/login/loginService';
 const loginSchema = yup.object().shape({
   usuario: yup
     .string()
-    .required('usuário é obrigatório')
-    .min(3, 'preencha ao menos 3 caracteres'),
-
+    .required('"Usuario" é obrigatório')
+    .min(3, 'Preencha ao menos 3 caracteres'),
   senha: yup
     .string()
-    .required('senha é obrigatória')
-    .min(8, 'sua senha precisa ter ao menos 8 caracteres'),
+    .required('"Senha" é obrigatória')
+    .min(8, 'Sua senha precisa ter ao menos 8 caracteres'),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     usuario: '',
     senha: '',
   };
+
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
+      form.setIsFormDisabled(true);
       loginService.login({
-        username: values.usuario,
-        password: values.senha,
+        username: values.usuario, // 'omariosouto'
+        password: values.senha, // 'senhasegura'
       })
         .then(() => {
           router.push('/app/profile');
+        })
+        .catch((err) => {
+          // desafio -> mostrar tela de erro
+          // eslint-disable-next-line no-console
+          console.error(err);
+        })
+        .finally(() => {
+          form.setIsFormDisabled(false);
         });
     },
     async validateSchema(values) {
@@ -43,14 +53,14 @@ export default function LoginForm() {
   });
 
   return (
-    <form id="formCadastro" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
         value={form.values.usuario}
-        onChange={form.handleChange}
         error={form.errors.usuario}
         isTouched={form.touched.usuario}
+        onChange={form.handleChange}
         onBlur={form.handleBlur}
       />
       <TextField
@@ -58,9 +68,9 @@ export default function LoginForm() {
         name="senha"
         type="password"
         value={form.values.senha}
-        onChange={form.handleChange}
         error={form.errors.senha}
         isTouched={form.touched.senha}
+        onChange={form.handleChange}
         onBlur={form.handleBlur}
       />
 
@@ -76,9 +86,14 @@ export default function LoginForm() {
       >
         Entrar
       </Button>
-      <pre>
-        {JSON.stringify(form.touched, null, 4)}
-      </pre>
     </form>
   );
 }
+
+LoginForm.defaultProps = {
+  onSubmit: undefined,
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
