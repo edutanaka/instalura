@@ -20,32 +20,36 @@ async function HttpClient(url, { headers, body, ...options }) {
 }
 
 export const loginService = {
-  async login({ username, password }) {
-    return HttpClient(`${BASE_URL}/api/login`, {
+  async login(
+    { username, password },
+    setCookieModule = setCookie,
+    HttpClientModule = HttpClient,
+  ) {
+    return HttpClientModule(`${BASE_URL}/api/login`, {
       method: 'POST',
       body: {
-        username,
-        password,
+        username, // 'omariosouto'
+        password, // 'senhasegura'
       },
     })
       .then((respostaConvertida) => {
         const { token } = respostaConvertida.data;
+        const hasToken = token;
+        if (!hasToken) {
+          throw new Error('Failed to login');
+        }
         const DAY_IN_SECONDS = 86400;
         // Salvar o Token
-        setCookie(null, 'APP_TOKEN', token, {
+        setCookieModule(null, 'APP_TOKEN', token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
-
         return {
           token,
         };
-      })
-      .catch((err) => {
-        throw new Error(`Falha na conexão com o servidor:( : ${err}`);
       });
   },
-  logout() {
-    destroyCookie(null, 'APP_TOKEN');
+  async logout(destroyCookieModule = destroyCookie) {
+    destroyCookieModule(null, 'APP_TOKEN');
   },
 };
