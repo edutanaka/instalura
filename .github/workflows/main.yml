@@ -82,5 +82,5 @@ jobs:
 
       - name: Run Integration Tests
         env:
-          DATO_CMS_TOKEN: e67ee100a36e9550a3497e41a169a5f
+          DATO_CMS_TOKEN: ${{ secrets.DATO_CMS_TOKEN }}
         run: yarn test:integration:build
